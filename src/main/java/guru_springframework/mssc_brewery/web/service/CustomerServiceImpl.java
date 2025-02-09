@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(UUID customerId, CustomerDto customerDto) {
-        System.out.println("updating customer data....");
+        System.out.println("updating customer data dummy....");
     }
 
     @Override
