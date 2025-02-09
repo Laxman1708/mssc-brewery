@@ -2,6 +2,7 @@ package guru_springframework.mssc_brewery.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import guru_springframework.mssc_brewery.web.model.BeerDto;
+import guru_springframework.mssc_brewery.web.model.BeerStyleEnum;
 import guru_springframework.mssc_brewery.web.service.BeerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,7 +45,7 @@ class BeerControllerTest {
         beerDto = BeerDto.builder()
                 .id(beerId)
                 .beerName("Test Beer")
-                .beerStyle("IPA")
+                .beerStyle(BeerStyleEnum.BREEZER)
                 .upc(123456789L)
                 .build();
     }
