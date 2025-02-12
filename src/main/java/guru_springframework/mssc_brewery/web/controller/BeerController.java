@@ -2,17 +2,24 @@ package guru_springframework.mssc_brewery.web.controller;
 
 import guru_springframework.mssc_brewery.web.model.BeerDto;
 import guru_springframework.mssc_brewery.web.service.BeerService;
+import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/beer")
+@Validated
 public class BeerController {
 
     private final BeerService beerService;
@@ -22,12 +29,12 @@ public class BeerController {
     }
 
     @GetMapping("/{beerId}")
-    public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId) {
+    public ResponseEntity<BeerDto> getBeer(@NotNull @PathVariable("beerId") UUID beerId) {
         return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity handlePost(@Valid @RequestBody BeerDto beerDto) {
+    public ResponseEntity handlePost(@NotNull @Valid @RequestBody BeerDto beerDto) {
         BeerDto beerDto1 = beerService.saveBeer(beerDto);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Location", "/api/v1/beer"+beerDto1.getId());
@@ -46,4 +53,5 @@ public class BeerController {
 
         beerService.deleteBeer(beerId);
     }
+
 }
