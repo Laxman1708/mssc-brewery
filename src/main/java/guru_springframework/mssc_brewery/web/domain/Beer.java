@@ -1,5 +1,6 @@
 package guru_springframework.mssc_brewery.web.domain;
 
+import guru_springframework.mssc_brewery.web.model.BeerStyleEnum;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,7 +31,7 @@ public class Beer {
     @UpdateTimestamp
     private Timestamp lastModifiedDate;
     private String beerName;
-    private String beerStyle;
+    private BeerStyleEnum beerStyle;
     @Column(unique = true)
     private Long upc;
     private BigDecimal price;
