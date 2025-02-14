@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.websocket.server.PathParam;
+import lombok.val;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,8 @@ public class BeerController {
 
     @PostMapping
     public ResponseEntity handlePost(@NotNull @Valid @RequestBody BeerDto beerDto) {
-        BeerDto beerDto1 = beerService.saveBeer(beerDto);
+        val beerDto1 = beerService.saveBeer(beerDto); // using project lombok val data type
+        // which automatically resolves the type needed. It is very much useful while working with Streams.
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Location", "/api/v1/beer"+beerDto1.getId());
         return new ResponseEntity(httpHeaders, HttpStatus.CREATED);

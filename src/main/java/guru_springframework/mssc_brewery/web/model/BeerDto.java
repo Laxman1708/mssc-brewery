@@ -21,9 +21,13 @@ public class BeerDto {
     @Null
     private UUID id;
 
+    @Null
     private Integer version;
 
+    @Null
     private OffsetDateTime createdDate;
+
+    @Null
     private OffsetDateTime lastModifiedDate;
 
     @NotBlank

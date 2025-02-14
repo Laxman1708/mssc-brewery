@@ -3,22 +3,28 @@ package guru_springframework.mssc_brewery.web.bootstrap;
 import guru_springframework.mssc_brewery.web.domain.Beer;
 import guru_springframework.mssc_brewery.web.model.BeerStyleEnum;
 import guru_springframework.mssc_brewery.web.repository.BeerRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
 @Component
+@RequiredArgsConstructor // this eliminates the creation of constructor
+//for final members
 public class BeerLoader implements CommandLineRunner {
 
     private final BeerRepository beerRepository;
 
-    public BeerLoader(BeerRepository beerRepository) {
-        this.beerRepository = beerRepository;
-    }
+//    we can remove the below constructore by using @RequiredArgsConstructor annotation of lombok
+//    public BeerLoader(BeerRepository beerRepository) {
+//        this.beerRepository = beerRepository;
+//    }
 
     @Override
-    public void run(String... args) throws Exception {
+    @SneakyThrows // we can remove Throws Exception with this lombok annotation
+    public void run(String... args) {
         loadBearRepo();
     }
 
@@ -57,6 +63,6 @@ public class BeerLoader implements CommandLineRunner {
                             .build()
             );
         }
-        System.out.println("Loaded beers: "+beerRepository.count());
+        System.out.println("Loaded beers count: "+beerRepository.count());
     }
 }
