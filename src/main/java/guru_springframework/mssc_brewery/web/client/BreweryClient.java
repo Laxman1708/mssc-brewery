@@ -27,7 +27,7 @@ public class BreweryClient {
     }
 
     public BeerDto getBeerById(UUID beerId) {
-        return restTemplate.getForObject(apihost + BEER_PATH_V1 +"/{beerId}" + beerId.toString(), BeerDto.class);
+        return restTemplate.getForObject(apihost + BEER_PATH_V1 +"/" + beerId.toString(), BeerDto.class);
     }
 
     public URI saveNewBeer(BeerDto beerDto) {
