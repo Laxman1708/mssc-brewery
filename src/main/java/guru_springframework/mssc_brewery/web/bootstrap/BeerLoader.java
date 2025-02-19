@@ -29,7 +29,6 @@ public class BeerLoader implements CommandLineRunner {
     }
 
     private void loadBearRepo() {
-
         if(beerRepository.count() == 0) {
             beerRepository.save(
                     Beer.builder()

@@ -1,5 +1,7 @@
 package guru_springframework.mssc_brewery.web.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Positive;
@@ -29,10 +31,12 @@ public class BeerDto {
     private OffsetDateTime createdDate;
 
     @Null
+    @JsonFormat(pattern = "yyyy:dd:mm'T'HH:mm:ssZ")
     private OffsetDateTime lastModifiedDate;
 
     @NotBlank
     @Size(min = 3, max = 100)
+//    @JsonProperty("nameOfTheBeer")
     private String beerName;
 
     private BeerStyleEnum beerStyle;
@@ -40,6 +44,7 @@ public class BeerDto {
     @Positive
     private Long upc;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
 
     @Positive
