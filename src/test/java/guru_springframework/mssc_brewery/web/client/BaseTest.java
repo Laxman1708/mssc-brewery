@@ -4,6 +4,7 @@ import guru_springframework.mssc_brewery.web.model.BeerDto;
 import guru_springframework.mssc_brewery.web.model.BeerStyleEnum;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 public class BaseTest {
@@ -17,6 +18,7 @@ public class BaseTest {
                 .createdDate(OffsetDateTime.now())
                 .lastModifiedDate(OffsetDateTime.now())
                 .upc(23876L)
+                .localDate(LocalDate.now())
                 .build();
     }
 }
